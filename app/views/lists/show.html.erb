@@ -1,0 +1,25 @@
+<div class="hero-img-list">
+  <%= image_tag @list.url, alt: "List poster" %>
+</div>
+
+<div class="container p-5">
+
+<h1><%= @list.name %></h1>
+<%= link_to "Add movie", new_list_bookmark_path(@list.id) %>
+
+<% @movies.each do |movie| %>
+  <div class="card">
+    <%= movie.title %>
+    <%= movie.overview %>
+    <%= movie.rating %>
+    <%= image_tag movie.poster_url, alt: "Movie poster" %>
+
+    <% my_bookmark = movie.bookmarks.find do |bookmark| %>
+      <%  bookmark.list_id == @list.id%>
+    <% end %>
+    <%= my_bookmark.comment %>
+    <%= link_to "delete", bookmark_path(my_bookmark.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+
+  </div>
+<% end %>
+</div>

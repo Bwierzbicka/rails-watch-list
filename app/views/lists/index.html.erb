@@ -1,0 +1,13 @@
+<div class="hero-img"></div>
+
+<div class="container p-5">
+  <h1 class="mb-3">My Lists</h1>
+    <div class="cards-container">
+      <% @lists.each do |list| %>
+        <div class="movie-card">
+          <%= image_tag list.url, alt: "Classic Movie"%>
+          <%= link_to list.name, list_path(list.id) %>
+        </div>
+      <% end %>
+  </div>
+</div>

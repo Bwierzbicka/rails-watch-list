@@ -19,11 +19,26 @@
     <link rel="apple-touch-icon" href="/icon.png">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": Rails.env.production? ? "reload" : "" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar" style="background-color: #c4e0f5;" data-bs-theme="light">
+      <div class="my-nav-bar">
+        <div>
+          <i class="fa-solid fa-film"></i>
+        </div>
+        <div>
+          <form class="container-fluid justify-content-end p-0">
+          <%= link_to "My lists", lists_path, class: "btn btn-light me-2"  %>
+          <%= link_to "New list", new_list_path, class: "btn btn-light" %>
+        </form>
+        </div>
+      </div>
+    </nav>
+
+      <%= yield %>
+
   </body>
 </html>
