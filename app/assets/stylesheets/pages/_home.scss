@@ -1,27 +1,26 @@
 // Specific CSS for your home-page
-.hero-img{
-  width: 100%;
-  height: 300px;
+.hero-img-home {
   background-image: asset-url('home_hero.jpg');
-  background-size: cover;
-  background-position: center;
 }
 
 i {
   color: $my-red;
 }
 
-.cards-container {
-  display: flex;
-  justify-content: space-between;
+.lists-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap : 30px;
 }
 
-.movie-card {
+.list-card {
   position: relative;
+  height: 200px;
+  background-color: $my-red;
 
   img {
-    width: 300px;
-    height: 150px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 
   }
@@ -39,7 +38,7 @@ i {
     text-shadow: 4px 4px 2px black;
 
     &:hover {
-      color: rgb(234, 246, 194);
+      color: gray;
     }
   }
 

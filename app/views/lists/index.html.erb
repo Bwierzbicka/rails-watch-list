@@ -1,11 +1,15 @@
-<div class="hero-img"></div>
+<div class="hero-img hero-img-home" ></div>
 
 <div class="container p-5">
   <h1 class="mb-3">My Lists</h1>
-    <div class="cards-container">
+    <div class="lists-container">
       <% @lists.each do |list| %>
-        <div class="movie-card">
-          <%= image_tag list.url, alt: "Classic Movie"%>
+        <div class="list-card">
+          <% if list.url %>
+            <%= image_tag list.url, alt: "Classic Movie"%>
+          <% else %>
+            <%= image_tag 'home_hero.jpg', alt: "List poster" %>
+          <% end %>
           <%= link_to list.name, list_path(list.id) %>
         </div>
       <% end %>

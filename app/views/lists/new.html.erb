@@ -1,7 +1,11 @@
-<h1>Create new watch list</h1>
-<%= simple_form_for [@list] do |f|%>
-<%= f.input :name %>
-<%= f.input :url %>
-<%# <%= f.association :movies, as: :check_boxes %>
-<%= f.submit "Create list", class: "btn btn-primary" %>
-<% end %>
+<div class="hero-img hero-img-home" ></div>
+
+<div class="container p-5 w-50">
+  <h1 class="mb-4">Create new watch list</h1>
+  <%= simple_form_for [@list] do |f|%>
+  <%= f.input :name %>
+  <%= f.input :url %>
+  <%# <%= f.association :movies, as: :check_boxes %>
+  <%= f.submit "Create list", class: "btn btn-primary" %>
+  <% end %>
+</div>

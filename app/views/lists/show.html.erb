@@ -1,25 +1,28 @@
 <div class="hero-img-list">
   <%= image_tag @list.url, alt: "List poster" %>
+  <h1><%= @list.name %></h1>
 </div>
 
-<div class="container p-5">
-
-<h1><%= @list.name %></h1>
-<%= link_to "Add movie", new_list_bookmark_path(@list.id) %>
-
-<% @movies.each do |movie| %>
-  <div class="card">
-    <%= movie.title %>
-    <%= movie.overview %>
-    <%= movie.rating %>
-    <%= image_tag movie.poster_url, alt: "Movie poster" %>
-
-    <% my_bookmark = movie.bookmarks.find do |bookmark| %>
-      <%  bookmark.list_id == @list.id%>
-    <% end %>
-    <%= my_bookmark.comment %>
-    <%= link_to "delete", bookmark_path(my_bookmark.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-
+<div class="container p-5 ">
+  <div class="add-movie ">
+    <%= link_to "Add movie", new_list_bookmark_path(@list.id), class: "btn btn-success" %>
   </div>
-<% end %>
+  <div class="cards-container">
+    <% @movies.each do |movie| %>
+      <div class="card">
+        <%= image_tag movie.poster_url, alt: "Movie poster" %>
+        <div class="movie-info">
+          <p><strong><%= movie.title %></strong> <%= movie.rating %> <i class="fa-solid fa-star" style="color: rgb(255, 168, 70);"></i></p>
+          <p><%= movie.overview %></p>
+          <% my_bookmark = movie.bookmarks.find do |bookmark| %>
+            <%  bookmark.list_id == @list.id%>
+          <% end %>
+          <div class="comment">
+            <p><i class="fa-solid fa-quote-left"></i> <%= my_bookmark.comment %></p>
+            <%= link_to "delete", bookmark_path(my_bookmark.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
