@@ -1,15 +1,17 @@
-<div class="hero-img hero-img-home" ></div>
+<div class="hero-img" style="background-image: url(<%= asset_path 'home_hero.jpg'%>)" ></div>
 
 <div class="container p-5">
   <h1 class="mb-3">My Lists</h1>
     <div class="lists-container">
       <% @lists.each do |list| %>
         <div class="list-card">
-          <% if list.url %>
+
+          <% unless list.url.empty? %>
             <%= image_tag list.url, alt: "Classic Movie"%>
           <% else %>
-            <%= image_tag 'home_hero.jpg', alt: "List poster" %>
+            <%= image_tag 'default_img.jpg', alt: "List poster" %>
           <% end %>
+
           <%= link_to list.name, list_path(list.id) %>
         </div>
       <% end %>

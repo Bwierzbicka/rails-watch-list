@@ -1,5 +1,9 @@
 <div class="hero-img-list">
-  <%= image_tag @list.url, alt: "List poster" %>
+  <% unless @list.url.empty? %>
+    <%= image_tag @list.url, alt: "Classic Movie"%>
+  <% else %>
+    <%= image_tag 'default_img.jpg', alt: "List poster" %>
+  <% end %>
   <h1><%= @list.name %></h1>
 </div>
 

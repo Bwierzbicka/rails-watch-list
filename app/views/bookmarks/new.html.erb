@@ -1,7 +1,14 @@
-<div class="hero-img hero-img-home" ></div>
+<div class="hero-img-list">
+  <% unless @list.url.empty? %>
+    <%= image_tag @list.url, alt: "Classic Movie"%>
+  <% else %>
+    <%= image_tag 'default_img.jpg', alt: "List poster" %>
+  <% end %>
+  <h1><%= @list.name %></h1>
+</div>
 
 <div class="container p-5 w-50">
-  <h1 class="mb-4">Add new movie to <strong><%= @list.name %></strong></h1>
+  <h1 class="mb-4">Add new movie</h1>
   <%= simple_form_for [@list, @bookmark ] do |f| %>
   <%= f.association :movie %>
   <%= f.input :comment %>
