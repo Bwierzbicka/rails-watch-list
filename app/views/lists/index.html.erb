@@ -1,4 +1,4 @@
-<div class="hero-img" style="background-image: url(<%= asset_path 'home_hero.jpg'%>)" ></div>
+<div class="hero-img" style="background-image: url(<%= cl_image_path 'home_hero_cbv3fq'%>)" ></div>
 
 <div class="container p-5">
   <h1 class="mb-3">My Lists</h1>
@@ -6,10 +6,10 @@
       <% @lists.each do |list| %>
         <div class="list-card">
 
-          <% unless list.url.empty? %>
-            <%= image_tag list.url, alt: "Classic Movie"%>
+          <% unless list.photo.attached? %>
+            <%= cl_image_tag list.photo.key%>
           <% else %>
-            <%= image_tag 'default_img.jpg', alt: "List poster" %>
+            <%= cl_image_tag("default_img_q1lqhk") %>
           <% end %>
 
           <%= link_to list.name, list_path(list.id) %>

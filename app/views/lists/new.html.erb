@@ -1,10 +1,10 @@
-<div class="hero-img" style="background-image: url(<%= asset_path 'home_hero.jpg'%>)" ></div>
+<div class="hero-img" style="background-image: url(<%= cl_image_path 'home_hero_cbv3fq'%>)"></div>
 
 <div class="container p-5 w-50">
   <h1 class="mb-4">Create new watch list</h1>
   <%= simple_form_for [@list] do |f|%>
   <%= f.input :name %>
-  <%= f.input :url %>
+  <%= f.input :photo, as: :file %>
   <%# <%= f.association :movies, as: :check_boxes %>
   <%= f.submit "Create list", class: "btn btn-primary" %>
   <% end %>

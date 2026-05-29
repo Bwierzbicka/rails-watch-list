@@ -1,8 +1,8 @@
 <div class="hero-img-list">
-  <% unless @list.url.empty? %>
-    <%= image_tag @list.url, alt: "Classic Movie"%>
+  <% unless @list.photo.attached? %>
+    <%= cl_image_tag @list.photo.key%>
   <% else %>
-    <%= image_tag 'default_img.jpg', alt: "List poster" %>
+    <%= cl_image_tag("default_img_q1lqhk", alt: "List poster" ) %>
   <% end %>
   <h1><%= @list.name %></h1>
 </div>
